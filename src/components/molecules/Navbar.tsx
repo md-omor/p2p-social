@@ -9,8 +9,10 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import NProgress from "nprogress";
 import React, { useEffect, useState } from "react";
 import { IoMenu } from "react-icons/io5";
+import { Button } from "../ui/button";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -63,11 +65,41 @@ const MainNavbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
+  const handleNavigation = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      // Add loading animation
+      NProgress.start();
+
+      // Add some offset for the fixed navbar
+      const offset = 100; // Adjust this value based on your navbar height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+
+      // Update URL without page reload
+      window.history.pushState({}, "", `/#${sectionId}`);
+
+      // End loading animation after a short delay
+      setTimeout(() => {
+        NProgress.done();
+      }, 500);
+    }
+  };
+
   return (
     <>
       <nav
         className={`
-        sticky top-5 z-50 mx-auto flex w-[90%] items-center justify-between rounded-[14px] border border-secondary !bg-black/[.18] py-5 p-2 shadow-inner md:w-[70%] lg:w-[75%] lg:max-w-screen-xl transform transition-all duration-500 ease-in-out ${
+        sticky top-5 z-50 mx-auto flex w-[90%] items-center justify-between rounded-[14px] border border-secondary !bg-black/[.18] py-4 p-2 shadow-inner md:w-[70%] lg:w-[75%] lg:max-w-screen-xl transform transition-all duration-500 ease-in-out ${
           isScrolled && !isOpen ? "-translate-y-full" : "translate-y-0"
         }
         bg-black backdrop-blur-3xl
@@ -91,7 +123,12 @@ const MainNavbar = () => {
                     className="text-gray-300 hover:text-white transition-colors"
                     asChild
                   >
-                    <Link href="/features">Features</Link>
+                    <a
+                      href="#features"
+                      onClick={(e) => handleNavigation(e, "features")}
+                    >
+                      Features
+                    </a>
                   </NavigationMenuCustomLink>
                 </NavigationMenuItem>
 
@@ -100,7 +137,12 @@ const MainNavbar = () => {
                     className="text-gray-300 hover:text-white transition-colors"
                     asChild
                   >
-                    <Link href="/how-to-use">How to use</Link>
+                    <a
+                      href="#testimonials"
+                      onClick={(e) => handleNavigation(e, "testimonials")}
+                    >
+                      Testimonials
+                    </a>
                   </NavigationMenuCustomLink>
                 </NavigationMenuItem>
 
@@ -109,7 +151,12 @@ const MainNavbar = () => {
                     className="text-gray-300 hover:text-white transition-colors"
                     asChild
                   >
-                    <Link href="/faqs">FAQs</Link>
+                    <a
+                      href="#faqs"
+                      onClick={(e) => handleNavigation(e, "faqs")}
+                    >
+                      FAQs
+                    </a>
                   </NavigationMenuCustomLink>
                 </NavigationMenuItem>
 
@@ -128,9 +175,10 @@ const MainNavbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-6">
-            <div className="flex items-center gap-2 text-gray-300">
-              <span>us</span>
-              <span>English</span>
+            <div className="flex justify-center">
+              <Button className="bg-[#3081cf] w-full rounded-full hover:bg-[#3081cf]/90 text-primary-foreground px-6 font-medium hover:bg-opacity-90 transition-colors flex items-center gap-2">
+                Download
+              </Button>
             </div>
 
             {/* Theme Toggle */}
@@ -193,9 +241,10 @@ const MainNavbar = () => {
             {/* Bottom Section */}
             <div className="mt-auto">
               {/* Language Selector */}
-              <div className="flex items-center gap-2 text-white mb-4">
-                <span>us</span>
-                <span>English</span>
+              <div className="flex justify-center">
+                <Button className="bg-[#3081cf] w-full rounded-full hover:bg-[#3081cf]/90 text-primary-foreground px-6 font-medium hover:bg-opacity-90 transition-colors flex items-center gap-2">
+                  Download
+                </Button>
               </div>
 
               {/* Theme Toggle */}

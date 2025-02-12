@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
 import { FaWhatsapp } from "react-icons/fa";
+import { Button } from "../ui/button";
 
 const Footer = () => {
   const footerLinks = {
@@ -42,9 +43,9 @@ const Footer = () => {
                 <FaWhatsapp className="w-8 h-8" />
                 <span className="text-xl font-medium">P2P Social</span>
               </div>
-              <button className="bg-[#25D366] text-black px-6 py-2.5 rounded-full font-medium hover:bg-opacity-90 transition-colors flex items-center gap-2">
+              <Button className="bg-[#3081cf] w-full rounded-full hover:bg-[#3081cf]/90 text-primary-foreground px-6 font-medium hover:bg-opacity-90 transition-colors flex items-center gap-2">
                 Download <span className="text-lg">↓</span>
-              </button>
+              </Button>
             </div>
 
             {/* Right Part - Navigation Links */}

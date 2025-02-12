@@ -2,6 +2,7 @@ import Footer from "@/components/molecules/Footer";
 import Navbar from "@/components/molecules/Navbar";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "nprogress/nprogress.css";
 import "../assets/css/globals.css";
 
 const inter = Inter({
