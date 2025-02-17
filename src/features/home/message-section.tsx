@@ -52,7 +52,7 @@ const MessageSection = () => {
   ];
 
   return (
-    <div className="py-8 sm:py-16 relative min-h-screen px-4 sm:px-0">
+    <div className="py-28 md:py-16 relative px-4 sm:px-0">
       {/* Top Messages Section */}
       <div className="relative h-[150px] sm:h-[200px] max-w-6xl mx-auto mb-12 sm:mb-20">
         {topMessages.map((msg, index) => (
