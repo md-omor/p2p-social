@@ -1,53 +1,85 @@
-import { FiClock, FiCopy, FiSettings } from "react-icons/fi";
-import { HiOutlineColorSwatch } from "react-icons/hi";
-import { IoDocumentTextOutline } from "react-icons/io5";
-import { TbRefresh } from "react-icons/tb";
+import UnifieOne from "@/assets/images/unifie (1).jpg";
+import UnifieTwo from "@/assets/images/unifie (2).jpg";
+import VoiceOne from "@/assets/images/voice messaging (1).jpg";
+import VoiceTwo from "@/assets/images/voice messaging (2).jpg";
+import VoiceThree from "@/assets/images/voice messaging (3).jpg";
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const NewFeature = () => {
-  const features = [
+  const voiceMessagingContent = [
     {
-      icon: (
-        <IoDocumentTextOutline className="text-[#3081cf] text-xl sm:text-2xl" />
-      ),
-      title: "Flux AI Text-to-Image Conversion with Flex.1",
-      description:
-        "Generate images simply by entering text descriptions into Flux AI image generator, enhanced by Flex.1",
+      text: "Connect with your followers and family via voice messaging",
+      image: VoiceOne,
     },
     {
-      icon: <FiClock className="text-[#3081cf] text-2xl" />,
-      title: "High-Precision Details with Flux AI and Flex.1",
-      description:
-        "Flux AI image generator is particularly adept at generating realistic human hands and facial expressions using Flex.1 technology",
+      text: "Share your thoughts and emotions through expressive voice notes",
+      image: VoiceTwo, // Assuming you have this image imported
     },
     {
-      icon: <HiOutlineColorSwatch className="text-[#3081cf] text-2xl" />,
-      title: "Flux AI Style Diversity powered by Flex.1",
-      description:
-        "Support for creating multiple artistic styles and image types with Flux AI image generator and Flex.1",
-    },
-    {
-      icon: <FiCopy className="text-[#3081cf] text-2xl" />,
-      title: "Batch Generation with Flux AI Image Generator",
-      description:
-        "Create multiple image variants simultaneously, enhancing creative efficiency with Flux AI powered by Flex.1",
-    },
-    {
-      icon: <FiSettings className="text-[#3081cf] text-2xl" />,
-      title: "Customizable Settings in Flux AI Image Generator",
-      description:
-        "Allows users to adjust parameters for ideal results with Flux AI image generator and Flex.1",
-    },
-    {
-      icon: <TbRefresh className="text-[#3081cf] text-2xl" />,
-      title: "Continuous Updates for Flux AI and Flex.1",
-      description:
-        "Regular model updates to continuously improve image quality and generation capabilities with Flux AI image generator and Flex.1 technology",
+      text: "Stay connected with personalized voice messages anytime, anywhere",
+      image: VoiceThree, // Assuming you have this image imported
     },
   ];
 
+  const unifieContent = [
+    {
+      text: "Earn Maximum With Your Content - Turn Your Creativity Into Profit",
+      image: UnifieOne,
+    },
+    {
+      text: "Monetize Your Passion With Exclusive Content Creation",
+      image: UnifieTwo,
+    },
+  ];
+
+  const fadeInLeft = {
+    hidden: { opacity: 0, x: -60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.2, // Increased duration
+        ease: [0.22, 1, 0.36, 1], // Smooth easing curve
+        staggerChildren: 0.3, // Stagger child animations
+      },
+    },
+    exit: {
+      opacity: 0,
+      x: -60,
+      transition: {
+        duration: 1.5, // Longer exit duration
+        delay: 0.5, // Longer delay before exit
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const fadeInRight = {
+    hidden: { opacity: 0, x: 60 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1.2,
+        ease: [0.22, 1, 0.36, 1],
+        staggerChildren: 0.3,
+      },
+    },
+    exit: {
+      opacity: 0,
+      x: 60,
+      transition: {
+        duration: 1.5,
+        delay: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
   return (
-    <div className="my-20 sm:my-40 px-4 sm:px-0">
-      <div className="max-w-6xl mx-auto">
+    <div className="my-20 sm:my-40">
+      <div className="max-w-6xl mx-auto px-4">
         <div className="mb-12 sm:mb-20 flex flex-col items-center justify-center">
           <h1 className="mb-3 text-base sm:text-lg tracking-wider text-[#3081cf] text-center">
             Features
@@ -61,23 +93,189 @@ const NewFeature = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-[#111111] rounded-[14px] p-6 sm:p-10 border border-gray-800/40 hover:border-[#3081cf]/30 transition-colors duration-300"
+        <div className="md:space-y-32 space-y-14 overflow-x-hidden">
+          {/* First Row */}
+          <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{
+                margin: "-20%",
+                amount: 0.3,
+              }}
+              variants={fadeInLeft}
+              className="md:w-1/2 w-full"
             >
-              <div className="bg-[#1a1a1a] w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center mb-6 sm:mb-8">
-                {feature.icon}
-              </div>
-              <h3 className="text-white text-xl sm:text-2xl font-medium mb-3 sm:mb-4 leading-tight">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400/80 leading-relaxed text-sm sm:text-[15px]">
-                {feature.description}
+              <p className="text-gray-100 text-center md:text-left text-lg md:text-[28px] font-medium leading-relaxed w-full md:w-5/6">
+                {voiceMessagingContent[0].text}
               </p>
-            </div>
-          ))}
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{
+                margin: "-20%",
+                amount: 0.3,
+              }}
+              variants={fadeInRight}
+              className="w-full md:w-[380px] h-[300px] md:h-[470px] rounded-2xl overflow-hidden mx-auto"
+            >
+              <Image
+                src={voiceMessagingContent[0].image}
+                alt="Voice Messaging"
+                className="object-cover w-full h-full"
+              />
+            </motion.div>
+          </div>
+
+          {/* Second Row */}
+          <div className="flex flex-col md:flex-row-reverse items-start justify-between gap-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{
+                margin: "-20%",
+                amount: 0.3,
+              }}
+              variants={fadeInRight}
+              className="md:w-1/2 w-full"
+            >
+              <p className="text-gray-100 text-center md:text-left text-lg md:text-[28px] font-medium leading-relaxed w-full">
+                {voiceMessagingContent[1].text}
+              </p>
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{
+                margin: "-20%",
+                amount: 0.3,
+              }}
+              variants={fadeInLeft}
+              className="w-full md:w-[380px] h-[300px] md:h-[470px] rounded-2xl overflow-hidden mx-auto"
+            >
+              <Image
+                src={voiceMessagingContent[1].image}
+                alt="Voice Messaging"
+                className="object-cover w-full h-full"
+              />
+            </motion.div>
+          </div>
+
+          {/* Third Row */}
+          <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{
+                margin: "-20%",
+                amount: 0.3,
+              }}
+              variants={fadeInLeft}
+              className="md:w-1/2 w-full"
+            >
+              <p className="text-gray-100 text-center md:text-left text-lg md:text-[28px] font-medium leading-relaxed w-full md:w-5/6">
+                {voiceMessagingContent[2].text}
+              </p>
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{
+                margin: "-20%",
+                amount: 0.3,
+              }}
+              variants={fadeInRight}
+              className="w-full md:w-[380px] h-[300px] md:h-[470px] rounded-2xl overflow-hidden mx-auto"
+            >
+              <Image
+                src={voiceMessagingContent[2].image}
+                alt="Voice Messaging"
+                className="object-cover w-full h-full"
+              />
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Unifie Section */}
+        <div className="mt-32 space-y-14 md:space-y-32 overflow-x-hidden">
+          {/* First Row */}
+          <div className="flex flex-col md:flex-row-reverse items-start justify-between gap-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{
+                margin: "-20%",
+                amount: 0.3,
+              }}
+              variants={fadeInLeft}
+              className="md:w-1/2 w-full"
+            >
+              <p className="text-gray-100 text-center md:text-left text-lg md:text-[28px] font-medium leading-relaxed w-full md:w-5/6">
+                {unifieContent[0].text}
+              </p>
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{
+                margin: "-20%",
+                amount: 0.3,
+              }}
+              variants={fadeInRight}
+              className="w-full md:w-[380px] h-[300px] md:h-[470px] rounded-2xl overflow-hidden mx-auto"
+            >
+              <Image
+                src={unifieContent[0].image}
+                alt="Unifie Content"
+                className="object-cover w-full h-full"
+              />
+            </motion.div>
+          </div>
+
+          {/* Second Row */}
+          <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{
+                margin: "-20%",
+                amount: 0.3,
+              }}
+              variants={fadeInRight}
+              className="md:w-1/2 w-full"
+            >
+              <p className="text-gray-100 text-center md:text-left text-lg md:text-[28px] font-medium leading-relaxed w-full">
+                {unifieContent[1].text}
+              </p>
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              exit="exit"
+              viewport={{
+                margin: "-20%",
+                amount: 0.3,
+              }}
+              variants={fadeInLeft}
+              className="w-full md:w-[380px] h-[300px] md:h-[470px] rounded-2xl overflow-hidden mx-auto"
+            >
+              <Image
+                src={unifieContent[1].image}
+                alt="Unifie Content"
+                className="object-cover w-full h-full"
+              />
+            </motion.div>
+          </div>
         </div>
       </div>
     </div>
