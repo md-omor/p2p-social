@@ -119,7 +119,7 @@ const MainNavbar = () => {
         <div className="flex w-full items-center justify-between px-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-white text-xl font-semibold">P2P Social</span>
+            <span className="text-white text-xl font-semibold">Selfie</span>
           </Link>
 
           {/* Desktop Navigation */}
