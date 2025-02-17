@@ -136,11 +136,34 @@ const Footer = () => {
 
         {/* Mobile View - Hidden on Desktop */}
         <div className="lg:hidden">
-          {/* Download Button */}
-          <div className="flex justify-center pt-16 pb-12">
-            <button className="bg-[#25D366] text-black px-6 py-2.5 rounded-full font-medium hover:bg-opacity-90 transition-colors flex items-center gap-2">
-              Download <span className="text-lg">↓</span>
-            </button>
+          {/* Download Buttons */}
+          <div className="flex flex-col gap-2 pt-16 pb-12 px-4">
+            <Link
+              href="#"
+              className="flex items-center bg-black hover:bg-black/90 text-white px-4 py-2 rounded-lg transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                <FaGooglePlay className="w-6 h-6 text-white" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-light">GET IT ON</span>
+                  <span className="text-base font-medium">Google Play</span>
+                </div>
+              </div>
+            </Link>
+            <Link
+              href="#"
+              className="flex items-center bg-black hover:bg-black/90 text-white px-4 py-2 rounded-lg transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                <FaApple className="w-6 h-6 text-white" />
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-light">
+                    Download on the
+                  </span>
+                  <span className="text-base font-medium">App Store</span>
+                </div>
+              </div>
+            </Link>
           </div>
 
           {/* Social Links */}
@@ -177,14 +200,14 @@ const Footer = () => {
             <span className="text-xl font-medium">Selfie</span>
           </div>
 
-          {/* Navigation Links */}
-          <div className="grid grid-cols-2 gap-x-4 gap-y-8 px-4 mb-8">
+          {/* Navigation Links - Mobile */}
+          <div className="grid grid-cols-2 sm:grid-cols-2 gap-8 px-4 mb-8">
             {Object.entries(footerLinks).map(([category, links]) => (
               <div key={category} className="flex flex-col gap-4">
                 <h3 className="text-[#8696A0] text-sm font-medium">
                   {category}
                 </h3>
-                <ul className="flex flex-col gap-4">
+                <ul className="flex flex-col gap-3">
                   {links.map((link) => (
                     <li key={link.label}>
                       <Link
@@ -200,18 +223,21 @@ const Footer = () => {
             ))}
           </div>
 
-          {/* Bottom Section */}
+          {/* Bottom Section - Mobile */}
           <div className="border-t border-gray-800 mt-4">
-            <div className="flex flex-col items-center gap-4 py-6">
-              <p className="text-base text-gray-200">
+            <div className="flex flex-col items-center gap-4 py-6 px-4">
+              <p className="text-base text-gray-200 text-center">
                 World&apos;s first decentralized community platform
               </p>
-              <div className="flex flex-col items-center gap-2">
-                <Link href="#" className="text-xs text-gray-400">
+              <div className="flex flex-col items-center gap-3">
+                <Link
+                  href="#"
+                  className="text-xs text-gray-400 hover:text-white"
+                >
                   Terms & Conditions
                 </Link>
-                <span className="text-xs text-gray-200">
-                  2025 selfie LLC and it&apos;s all other affiliates{" "}
+                <span className="text-xs text-gray-200 text-center">
+                  2025 selfie LLC and it&apos;s all other affiliates
                 </span>
               </div>
             </div>
