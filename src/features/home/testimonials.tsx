@@ -55,23 +55,23 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-8 px-4 sm:px-0">
           {/* First Row */}
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 w-full">
             <TestimonialCard {...testimonials[0]} />
           </div>
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 w-full">
             <TestimonialCard {...testimonials[1]} />
           </div>
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 w-full">
             <TestimonialCard {...testimonials[2]} />
           </div>
 
           {/* Second Row */}
-          <div className="lg:col-start-3 lg:col-span-4">
+          <div className="lg:col-start-3 lg:col-span-4 w-full">
             <TestimonialCard {...testimonials[3]} />
           </div>
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-4 w-full">
             <TestimonialCard {...testimonials[4]} />
           </div>
         </div>
@@ -91,9 +91,9 @@ const TestimonialCard = ({
   content: string;
 }) => {
   return (
-    <div className="bg-[#1C1C1C] rounded-2xl p-4 sm:p-6">
+    <div className="bg-[#1C1C1C] rounded-2xl p-5 sm:p-6 h-full">
       <div className="flex items-center gap-3 mb-4">
-        <div className="relative w-10 h-10">
+        <div className="relative w-12 h-12 sm:w-10 sm:h-10 flex-shrink-0">
           <Image
             src={image}
             alt={name}
