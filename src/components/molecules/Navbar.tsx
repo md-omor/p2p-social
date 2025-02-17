@@ -1,6 +1,12 @@
 "use client";
 
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   NavigationMenu,
   NavigationMenuCustomLink,
   NavigationMenuItem,
@@ -10,6 +16,7 @@ import {
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import NProgress from "nprogress";
+import { QRCodeSVG } from "qrcode.react";
 import React, { useEffect, useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import { Button } from "../ui/button";
@@ -44,6 +51,7 @@ ListItem.displayName = "ListItem";
 const MainNavbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled] = useState(false);
+  const [showQRModal, setShowQRModal] = useState(false);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -155,7 +163,7 @@ const MainNavbar = () => {
                       href="#faqs"
                       onClick={(e) => handleNavigation(e, "faqs")}
                     >
-                      FAQs
+                      About Us
                     </a>
                   </NavigationMenuCustomLink>
                 </NavigationMenuItem>
@@ -165,7 +173,7 @@ const MainNavbar = () => {
                     className="text-gray-300 hover:text-white transition-colors"
                     asChild
                   >
-                    <Link href="/playground">Playground</Link>
+                    <Link href="/playground"> For Business</Link>
                   </NavigationMenuCustomLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
@@ -176,7 +184,10 @@ const MainNavbar = () => {
 
           <div className="hidden lg:flex items-center gap-6">
             <div className="flex justify-center">
-              <Button className="bg-[#3081cf] w-full rounded-full hover:bg-[#3081cf]/90 text-primary-foreground px-6 font-medium hover:bg-opacity-90 transition-colors flex items-center gap-2">
+              <Button
+                className="bg-[#3081cf] w-full rounded-full hover:bg-[#3081cf]/90 text-primary-foreground px-6 font-medium hover:bg-opacity-90 transition-colors flex items-center gap-2"
+                onClick={() => setShowQRModal(true)}
+              >
                 Download
               </Button>
             </div>
@@ -240,17 +251,13 @@ const MainNavbar = () => {
 
             {/* Bottom Section */}
             <div className="mt-auto">
-              {/* Language Selector */}
               <div className="flex justify-center">
-                <Button className="bg-[#3081cf] w-full rounded-full hover:bg-[#3081cf]/90 text-primary-foreground px-6 font-medium hover:bg-opacity-90 transition-colors flex items-center gap-2">
+                <Button
+                  className="bg-[#3081cf] w-full rounded-full hover:bg-[#3081cf]/90 text-primary-foreground px-6 font-medium hover:bg-opacity-90 transition-colors flex items-center gap-2"
+                  onClick={() => setShowQRModal(true)}
+                >
                   Download
                 </Button>
-              </div>
-
-              {/* Theme Toggle */}
-              <div className="flex items-center gap-2 text-white">
-                <span>Light</span>
-                <button className="text-white">☀️</button>
               </div>
             </div>
           </div>
@@ -263,6 +270,31 @@ const MainNavbar = () => {
             onClick={() => setIsOpen(false)}
           />
         )}
+
+        {/* QR Code Modal */}
+        <Dialog open={showQRModal} onOpenChange={setShowQRModal}>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle className="text-center">
+                Scan QR Code to Download
+              </DialogTitle>
+            </DialogHeader>
+            <div className="flex flex-col items-center justify-center p-6">
+              <div className="w-64 h-64 flex items-center justify-center">
+                <QRCodeSVG
+                  value="https://your-app-download-link.com" // Replace with your actual app download link
+                  size={256}
+                  level="H"
+                  includeMargin
+                  className="rounded-lg"
+                />
+              </div>
+              <p className="mt-4 text-center text-sm text-muted-foreground">
+                Scan this QR code with your mobile device to download our app
+              </p>
+            </div>
+          </DialogContent>
+        </Dialog>
       </nav>
       <div className="h-[60px] w-full" /> {/* Spacer for fixed navbar */}
     </>
