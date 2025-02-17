@@ -1,33 +1,26 @@
 import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
-import { FaWhatsapp } from "react-icons/fa";
-import { Button } from "../ui/button";
+import { FaApple, FaGooglePlay, FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   const footerLinks = {
     "What we do": [
-      { label: "Features", href: "#" },
+      { label: "Careers", href: "#" },
+
+      { label: "Develoepr", href: "#" },
       { label: "Blog", href: "#" },
       { label: "Security", href: "#" },
-      { label: "For Business", href: "#" },
     ],
     "Who we are": [
       { label: "About us", href: "#" },
-      { label: "Careers", href: "#" },
-      { label: "Brand Center", href: "#" },
-      { label: "Privacy", href: "#" },
+      { label: "Features", href: "#" },
     ],
-    "Use WhatsApp": [
-      { label: "Android", href: "#" },
-      { label: "iPhone", href: "#" },
-      { label: "Mac/PC", href: "#" },
-      { label: "WhatsApp Web", href: "#" },
-    ],
+
     "Need help?": [
+      { label: "Terms & Conditions", href: "#" },
+      { label: "Privacy Policy", href: "#" },
       { label: "Contact Us", href: "#" },
       { label: "Help Center", href: "#" },
-      { label: "Apps", href: "#" },
-      { label: "Security Advisories", href: "#" },
     ],
   };
 
@@ -38,18 +31,43 @@ const Footer = () => {
         <div className="hidden lg:block">
           <div className="flex justify-between pt-16 pb-12">
             {/* Left Part - Logo and Download */}
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
               <div className="flex items-center gap-2 text-white">
                 <FaWhatsapp className="w-8 h-8" />
-                <span className="text-xl font-medium">P2P Social</span>
+                <span className="text-xl font-medium">Selfie</span>
               </div>
-              <Button className="bg-[#3081cf] w-full rounded-full hover:bg-[#3081cf]/90 text-primary-foreground px-6 font-medium hover:bg-opacity-90 transition-colors flex items-center gap-2">
-                Download <span className="text-lg">↓</span>
-              </Button>
+              <div className="flex flex-col gap-2">
+                <Link
+                  href="#"
+                  className="flex items-center bg-black hover:bg-black/90 text-white px-4 py-2 rounded-lg transition-colors"
+                >
+                  <div className="flex items-center gap-2">
+                    <FaGooglePlay className="w-6 h-6 text-white" />
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-light">GET IT ON</span>
+                      <span className="text-base font-medium">Google Play</span>
+                    </div>
+                  </div>
+                </Link>
+                <Link
+                  href="#"
+                  className="flex items-center bg-black hover:bg-black/90 text-white px-4 py-2 rounded-lg transition-colors"
+                >
+                  <div className="flex items-center gap-2">
+                    <FaApple className="w-6 h-6 text-white" />
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-light">
+                        Download on the
+                      </span>
+                      <span className="text-base font-medium">App Store</span>
+                    </div>
+                  </div>
+                </Link>
+              </div>
             </div>
 
             {/* Right Part - Navigation Links */}
-            <div className="grid grid-cols-4 gap-16">
+            <div className="grid grid-cols-3 gap-16">
               {Object.entries(footerLinks).map(([category, links]) => (
                 <div key={category} className="flex flex-col gap-4">
                   <h3 className="text-[#8696A0] text-sm font-medium">
@@ -76,19 +94,9 @@ const Footer = () => {
           <div className="border-t border-gray-800">
             <div className="flex items-center justify-between py-6">
               <div className="flex items-center gap-6">
-                <span className="text-sm text-gray-400">2025 © P2P Social</span>
-                <Link
-                  href="#"
-                  className="text-sm text-gray-400 hover:underline"
-                >
-                  Terms & Privacy Policy
-                </Link>
-                <Link
-                  href="#"
-                  className="text-sm text-gray-400 hover:underline"
-                >
-                  Sitemap
-                </Link>
+                <span className="text-base text-gray-200">
+                  2025 selfie LLC and it&apos;s all other affiliates{" "}
+                </span>
               </div>
 
               {/* Social Links */}
@@ -119,12 +127,9 @@ const Footer = () => {
                 </Link>
               </div>
 
-              {/* Language Selector */}
-              <select className="bg-transparent border border-gray-700 rounded-full px-4 py-2 text-sm text-gray-400">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-              </select>
+              <p className="text-base text-gray-200">
+                World&apos;s first decentralized community platform
+              </p>
             </div>
           </div>
         </div>
@@ -169,7 +174,7 @@ const Footer = () => {
           {/* Logo */}
           <div className="flex justify-center items-center gap-2 text-white mb-8">
             <FaWhatsapp className="w-8 h-8" />
-            <span className="text-xl font-medium">P2P Social</span>
+            <span className="text-xl font-medium">Selfie</span>
           </div>
 
           {/* Navigation Links */}
@@ -198,19 +203,16 @@ const Footer = () => {
           {/* Bottom Section */}
           <div className="border-t border-gray-800 mt-4">
             <div className="flex flex-col items-center gap-4 py-6">
-              <select className="bg-transparent border border-gray-700 rounded-full px-4 py-2 text-sm text-gray-400 w-64">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-              </select>
+              <p className="text-base text-gray-200">
+                World&apos;s first decentralized community platform
+              </p>
               <div className="flex flex-col items-center gap-2">
                 <Link href="#" className="text-xs text-gray-400">
-                  Sitemap
+                  Terms & Conditions
                 </Link>
-                <Link href="#" className="text-xs text-gray-400">
-                  Terms & Privacy Policy
-                </Link>
-                <span className="text-xs text-gray-400">2025 © P2P Social</span>
+                <span className="text-xs text-gray-200">
+                  2025 selfie LLC and it&apos;s all other affiliates{" "}
+                </span>
               </div>
             </div>
           </div>
